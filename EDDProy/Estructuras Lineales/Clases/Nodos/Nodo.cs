@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDDemo
+namespace Trabajo2
 {
-    public class Nodo
+    internal class Nodo
     {
-        public String Dato;
-        public Nodo sig;
+        public String Nombre { get; set; }
+        public Nodo siguiente { get; set; }
     }
 }

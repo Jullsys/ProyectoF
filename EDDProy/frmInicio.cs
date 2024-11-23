@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EDDemo.Estructuras_No_Lineales;
+using EV2;
+using Trabajo2;
+
 
 namespace EDDemo
 {
@@ -28,16 +31,11 @@ namespace EDDemo
 
         }
 
-        private void pilasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPilas mPilas = new frmPilas();
-            mPilas.MdiParent = this;
-            mPilas.Show();
-        }
-
         private void estructurasLinealesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form1 EstrucL = new Form1();
+            EstrucL.MdiParent = this;
+            EstrucL.Show();
         }
 
         private void arbolesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,6 +43,13 @@ namespace EDDemo
             frmArboles mArboles = new frmArboles();
             mArboles.MdiParent = this;
             mArboles.Show();
+        }
+
+        private void recursividadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InterfazR interfaz = new InterfazR();
+            interfaz.MdiParent = this;
+            interfaz.Show();
         }
     }
 }
