@@ -127,6 +127,13 @@
     <Compile Include="Estructuras Lineales\Clases\ListCircDo.Designer.cs">
       <DependentUpon>ListCircDo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ordenamiento\Clases\Shellsort.cs" />
+    <Compile Include="Ordenamiento\Orden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ordenamiento\Orden.Designer.cs">
+      <DependentUpon>Orden.cs</DependentUpon>
+    </Compile>
     <Compile Include="Recursividad\clases\BusqBi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estructuras Lineales\Clases\ListCircDo.resx">
       <DependentUpon>ListCircDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ordenamiento\Orden.resx">
+      <DependentUpon>Orden.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Recursividad\clases\BusqBi.resx">
       <DependentUpon>BusqBi.cs</DependentUpon>

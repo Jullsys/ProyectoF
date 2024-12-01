@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using EDDemo.Estructuras_No_Lineales;
 using EV2;
 using Trabajo2;
+using EDDemo.Ordenamiento;
 
 
 namespace EDDemo
@@ -50,6 +51,13 @@ namespace EDDemo
             InterfazR interfaz = new InterfazR();
             interfaz.MdiParent = this;
             interfaz.Show();
+        }
+
+        private void ordenamientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orden orden = new Orden();
+            orden.MdiParent = this;
+            orden.Show();
         }
     }
 }

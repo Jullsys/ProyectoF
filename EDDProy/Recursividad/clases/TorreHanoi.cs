@@ -23,24 +23,38 @@ namespace EV2
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            void torresHanoi(int n, int o, int d, int aux)//creamo la funcion con los parametros.
+
+            listBox1.Items.Clear();
+            int numDiscos = int.Parse(textBox1.Text);
+           
+            ResolverTorreDeHanoi(numDiscos, 'A', 'C', 'B');
+
+            void ResolverTorreDeHanoi(int numDiscoss, char origen, char destino, char auxiliar)
             {
-                if (n > 0)//Queremos que n sea mayor a 0 para que asi hayan anillos
+                // Caso base: Si solo hay un disco, simplemente moverlo de origen a destino
+                if (numDiscoss == 1)
                 {
-                    torresHanoi(n - 1, o, aux, d);//especificamos parametros
-                   
-                    textBox1.Text ="Se mueve el anillo desde torre "+o+ " hasta torre "+d;
-                    torresHanoi(n - 1, aux, d, o);
+                   listBox1.Items.Add($"Mover disco 1 de {origen} a {destino}");
                 }
-                else//si pone 0 es que no hay anillos
+                else
                 {
-                    textBox1.Text = "No hay anillos" ;
+                    // Mover numDiscos-1 discos de origen a auxiliar, usando destino como auxiliar
+                    ResolverTorreDeHanoi(numDiscoss - 1, origen, auxiliar, destino);
+
+                    // Mover el disco más grande (el que queda) de origen a destino
+                    listBox1.Items.Add($"Mover disco {numDiscoss} de {origen} a {destino}");
+
+                    // Mover los numDiscos-1 discos de auxiliar a destino, usando origen como auxiliar
+                    ResolverTorreDeHanoi(numDiscoss - 1, auxiliar, destino, origen);
                 }
             }
-            int numero = Convert.ToInt32(textBox1.Text);
+
             sw.Stop();
-            torresHanoi(numero, 1, 3, 2);//le damos valores a los parametros.
             textBox2.Text = sw.Elapsed.ToString();
+        }
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

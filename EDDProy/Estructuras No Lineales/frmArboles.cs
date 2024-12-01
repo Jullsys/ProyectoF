@@ -362,7 +362,7 @@ namespace EDDemo.Estructuras_No_Lineales
             int numeroNodos = miArbol.ContarNodos(raiz);
 
             // Verificamos si el árbol es completo
-            if (miArbol.EsArbolBinarioCompleto(raiz, 0, numeroNodos))
+            if (miArbol.ArbolBiCompleto(raiz, 0, numeroNodos))
             {
                 lblEsCompleto.Text = "Esta completo.";
             }
@@ -382,7 +382,7 @@ namespace EDDemo.Estructuras_No_Lineales
                 return;
             }
 
-            if (miArbol.EsArbolBinarioLleno(raiz))
+            if (miArbol.ArbolBiLleno(raiz))
             {
                 lblEsLleno.Text = "El árbol es binario lleno.";
             }

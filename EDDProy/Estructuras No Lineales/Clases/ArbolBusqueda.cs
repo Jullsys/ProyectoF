@@ -312,7 +312,7 @@ namespace EDDemo.Estructuras_No_Lineales
            return 1 + nodosIzq + nodosDer;
         }
 
-        public bool EsArbolBinarioCompleto(NodoBinario nodo, int indice, int numeroNodos)
+        public bool ArbolBiCompleto(NodoBinario nodo, int indice, int numeroNodos)
         {
             if (nodo == null)
                 return true; 
@@ -320,8 +320,8 @@ namespace EDDemo.Estructuras_No_Lineales
             if (indice >= numeroNodos)
                 return false;
 
-            bool izquierdaCompleto = EsArbolBinarioCompleto(nodo.Izq, 2 * indice + 1, numeroNodos);
-            bool derechaCompleto = EsArbolBinarioCompleto(nodo.Der, 2 * indice + 2, numeroNodos);
+            bool izquierdaCompleto = ArbolBiCompleto(nodo.Izq, 2 * indice + 1, numeroNodos);
+            bool derechaCompleto = ArbolBiCompleto(nodo.Der, 2 * indice + 2, numeroNodos);
 
             return izquierdaCompleto && derechaCompleto;
         }
@@ -333,7 +333,7 @@ namespace EDDemo.Estructuras_No_Lineales
           
             return 1 + ContarNodos(nodo.Izq) + ContarNodos(nodo.Der);
         }
-        public bool EsArbolBinarioLleno(NodoBinario nodo)
+        public bool ArbolBiLleno(NodoBinario nodo)
         {
            
             if (nodo == null)
@@ -345,7 +345,7 @@ namespace EDDemo.Estructuras_No_Lineales
             if (nodo.Izq == null || nodo.Der == null)
                 return false;
 
-            return EsArbolBinarioLleno(nodo.Izq) && EsArbolBinarioLleno(nodo.Der);
+            return ArbolBiLleno(nodo.Izq) && ArbolBiLleno(nodo.Der);
         }
 
     }
