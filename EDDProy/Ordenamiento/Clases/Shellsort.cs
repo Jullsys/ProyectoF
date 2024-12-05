@@ -10,9 +10,8 @@ namespace EDDemo.Ordenamiento.Clases
     public class Shellsort
     {
         private int[] lista;
-        private Random rand = new Random();  // Instanciamos Random una sola vez
+        private Random rand = new Random();  
 
-        // Método de ShellSort
         public void OrdenarLista()
         {
             if (lista == null || lista.Length == 0)
@@ -23,7 +22,6 @@ namespace EDDemo.Ordenamiento.Clases
             ShellSort(lista);
         }
 
-        // Método para generar la lista aleatoria
         public void GenerarListaAleatoria(int cantidad)
         {
             if (cantidad <= 0)
@@ -34,11 +32,10 @@ namespace EDDemo.Ordenamiento.Clases
             lista = new int[cantidad];
             for (int i = 0; i < cantidad; i++)
             {
-                lista[i] = rand.Next(1, 100);  // Genera números aleatorios entre 1 y 100
+                lista[i] = rand.Next(1, 100); 
             }
         }
 
-        // Método que devuelve la lista actual
         public int[] GetLista()
         {
             if (lista == null)
@@ -48,7 +45,6 @@ namespace EDDemo.Ordenamiento.Clases
             return lista;
         }
 
-        // Algoritmo ShellSort
         private void ShellSort(int[] array)
         {
             int n = array.Length;
@@ -67,5 +63,73 @@ namespace EDDemo.Ordenamiento.Clases
             }
         }
 
+        public void OrdenarListaRadix()
+        {
+            if (lista == null || lista.Length == 0)
+            {
+                throw new InvalidOperationException("La lista no ha sido generada.");
+            }
+
+            int m = lista.Max();  
+            for (int exp = 1; m / exp > 0; exp *= 10)
+            {
+                CountingSortPorDigito(lista, exp);  
+            }
+        }
+
+        private void CountingSortPorDigito(int[] array, int exp)
+        {
+            int[] output = new int[array.Length];
+            int[] count = new int[10]; 
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                int index = (array[i] / exp) % 10;
+                count[index]++;
+            }
+
+            for (int i = 1; i < 10; i++)
+            {
+                count[i] += count[i - 1];
+            }
+
+            
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                int index = (array[i] / exp) % 10;
+                output[count[index] - 1] = array[i];
+                count[index]--;
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = output[i];
+            }
+        }
+        public int BuscarBinario(int numeroBuscado)
+        {
+            int izquierda = 0;
+            int derecha = lista.Length - 1;
+
+            while (izquierda <= derecha)
+            {
+                int medio = (izquierda + derecha) / 2;
+
+                if (lista[medio] == numeroBuscado)
+                {
+                    return medio;  
+                }
+                else if (lista[medio] < numeroBuscado)
+                {
+                    izquierda = medio + 1;  
+                }
+                else
+                {
+                    derecha = medio - 1; 
+                }
+            }
+
+            return -1; 
+        }
     }
 }

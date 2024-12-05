@@ -51,5 +51,31 @@ namespace EDDemo.Ordenamiento
            txtDesorden.Text = string.Join(", ", lista);
         }
 
+        private void Radix_Click(object sender, EventArgs e)
+        {
+            shellsort.OrdenarListaRadix();
+            MostrarLista(shellsort.GetLista());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtBusqueda.Text, out int numeroBuscado))
+            {
+                int resultado = shellsort.BuscarBinario(numeroBuscado);
+
+                if (resultado != -1)
+                {
+                    MessageBox.Show($"Número encontrado en el índice: {resultado}");
+                }
+                else
+                {
+                    MessageBox.Show("Número no encontrado en la lista.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese un número válido.");
+            }
+        }
     }
 }

@@ -35,6 +35,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txtShellSort = new System.Windows.Forms.TextBox();
             this.txtDesorden = new System.Windows.Forms.TextBox();
+            this.Radix = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,11 +100,41 @@
             this.txtDesorden.Size = new System.Drawing.Size(265, 20);
             this.txtDesorden.TabIndex = 11;
             // 
+            // Radix
+            // 
+            this.Radix.Location = new System.Drawing.Point(81, 244);
+            this.Radix.Name = "Radix";
+            this.Radix.Size = new System.Drawing.Size(75, 23);
+            this.Radix.TabIndex = 12;
+            this.Radix.Text = "Radix";
+            this.Radix.UseVisualStyleBackColor = true;
+            this.Radix.Click += new System.EventHandler(this.Radix_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(606, 259);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Busqueda";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(594, 205);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(100, 20);
+            this.txtBusqueda.TabIndex = 14;
+            // 
             // Orden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtBusqueda);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.Radix);
             this.Controls.Add(this.txtDesorden);
             this.Controls.Add(this.txtShellSort);
             this.Controls.Add(this.button2);
@@ -126,5 +159,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtShellSort;
         private System.Windows.Forms.TextBox txtDesorden;
+        private System.Windows.Forms.Button Radix;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtBusqueda;
     }
 }
