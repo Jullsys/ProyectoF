@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace EDDemo.Ordenamiento.Clases
     public class Shellsort
     {
         private int[] lista;
-        private Random rand = new Random();  
+        private Random rand = new Random();
+        private Dictionary<int, List<int>> hashTabla;
 
         public void OrdenarLista()
         {
@@ -34,6 +36,7 @@ namespace EDDemo.Ordenamiento.Clases
             {
                 lista[i] = rand.Next(1, 100); 
             }
+            TablaHash();
         }
 
         public int[] GetLista()
@@ -73,11 +76,11 @@ namespace EDDemo.Ordenamiento.Clases
             int m = lista.Max();  
             for (int exp = 1; m / exp > 0; exp *= 10)
             {
-                CountingSortPorDigito(lista, exp);  
+                CuentaPorDigito(lista, exp);  
             }
         }
 
-        private void CountingSortPorDigito(int[] array, int exp)
+        private void CuentaPorDigito(int[] array, int exp)
         {
             int[] output = new int[array.Length];
             int[] count = new int[10]; 
@@ -131,5 +134,40 @@ namespace EDDemo.Ordenamiento.Clases
 
             return -1; 
         }
+
+        private void TablaHash()
+        {
+            hashTabla = new Dictionary<int, List<int>>();
+
+            foreach (int numero in lista)
+            {
+                int clave = ObtClaveHash(numero);
+
+                if (!hashTabla.ContainsKey(clave))
+                {
+                    hashTabla[clave] = new List<int>();
+                }
+
+                hashTabla[clave].Add(numero);
+            }
+        }
+
+        private int ObtClaveHash(int numero)
+        {
+            return numero % 10;  
+        }
+
+        public bool BuscarPorHash(int numeroBuscado)
+        {
+            int clave = ObtClaveHash(numeroBuscado);
+
+            if (hashTabla.ContainsKey(clave))
+            {
+                return hashTabla[clave].Contains(numeroBuscado);
+            }
+
+            return false;  
+        }
+
     }
 }

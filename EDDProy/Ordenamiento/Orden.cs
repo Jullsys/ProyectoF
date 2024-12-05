@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trabajo2;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EDDemo.Ordenamiento
 {
@@ -24,6 +26,7 @@ namespace EDDemo.Ordenamiento
 
         void button1_Click(object sender, EventArgs e)
         {
+            
             int cantidad = (int)numericUpDown1.Value;
 
             if (cantidad <= 0)
@@ -34,12 +37,18 @@ namespace EDDemo.Ordenamiento
 
             shellsort.GenerarListaAleatoria(cantidad);
             MostrarListaDes(shellsort.GetLista());
+
         }
 
         void button2_Click(object sender, EventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             shellsort.OrdenarLista();
             MostrarLista(shellsort.GetLista());
+
+            sw.Stop();
+            textBox1.Text = sw.Elapsed.ToString();
         }
 
         private void MostrarLista(int[] lista)
@@ -53,8 +62,13 @@ namespace EDDemo.Ordenamiento
 
         private void Radix_Click(object sender, EventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             shellsort.OrdenarListaRadix();
             MostrarLista(shellsort.GetLista());
+
+            sw.Stop();
+            textBox1.Text = sw.Elapsed.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -65,7 +79,7 @@ namespace EDDemo.Ordenamiento
 
                 if (resultado != -1)
                 {
-                    MessageBox.Show($"Número encontrado en el índice: {resultado}");
+                    MessageBox.Show($"Número encontrado en el lugar: {resultado+1} de la lista");
                 }
                 else
                 {
@@ -74,7 +88,28 @@ namespace EDDemo.Ordenamiento
             }
             else
             {
-                MessageBox.Show("Por favor ingrese un número válido.");
+                MessageBox.Show("Por favor ingrese un número.");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtBusqueda.Text, out int numeroBuscado))
+            {
+                bool encontrado = shellsort.BuscarPorHash(numeroBuscado);
+
+                if (encontrado)
+                {
+                    MessageBox.Show("Número encontrado en la tabla.");
+                }
+                else
+                {
+                    MessageBox.Show("Número no encontrado en la tabla.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese un número.");
             }
         }
     }
